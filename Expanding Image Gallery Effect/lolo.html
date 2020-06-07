@@ -1,0 +1,137 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <title>Document</title>
+     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700i" rel="stylesheet">
+     <style>
+         *{
+             margin: 0;
+             padding: 0;
+         }
+         
+         body{
+             font-family: 'Roboto Condensed', sans-serif;
+         }
+      .hd-accordion {
+	 height: 100vh;
+	 display: flex;
+}
+ .item {
+	 position: relative;
+	 z-index: 1;
+	 flex: 1;
+	 transition: 0.6s cubic-bezier(0.69, 0.01, 0.25, 1);
+	 background-color: black;
+	 display: flex;
+}
+ .item:hover, .item.is-active {
+	 flex-grow: 2;
+}
+ .item:hover .content, .item.is-active .content {
+	 opacity: 1;
+}
+ .item:hover .content .profile, .item.is-active .content .profile {
+	 transform: translateY(0);
+	 opacity: 1;
+}
+ .bg {
+	 position: absolute;
+	 left: 0;
+	 top: 0;
+	 right: 0;
+	 bottom: 0;
+	 z-index: -1;
+	 background-position: top center;
+	 transition: 0.3s ease;
+	  
+}
+ .content {
+	 display: flex;
+	 flex: 1;
+	 background-color: white;
+	 opacity: 0;
+	 transition: 0.3s ease;
+	 justify-content: center;
+}
+ .profile {
+	 transition: 0.6s cubic-bezier(0.69, 0.01, 0.25, 1);
+	 transition-delay: 0.3s;
+	 background-color: white;
+	 text-align: center;
+	 display: flex;
+	 flex-direction: column;
+	 justify-content: center;
+	 max-width: 250px;
+	 padding: 20px;
+	 opacity: 0;
+	 transform: translateY(70px);
+}
+ .profile img {
+	 align-self: center;
+	 border-radius: 50%;
+}
+ 
+     
+     </style>
+ </head>
+ <body>
+     <div class="hd-accordion">
+  <div class="item">
+    <div class="bg" style="background-image:url(1.jpg)"></div>
+    <div class="content">
+      <div class="profile">
+        <img src="one.jpg"  alt="">
+        <br>
+        <h2 class="title">Aura kasih</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, eos?</p>
+      </div>
+    </div>
+  </div>
+  <div class="item">
+    <div class="bg" style="background-image:url(2.jpg); background-size: cover;"></div>
+    <div class="content">
+      <div class="profile">
+        <img src="two.jpg" alt="">
+        <br>
+        <h2 class="title">Marissa Coleman</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, eos?</p>
+      </div>
+    </div>
+  </div>
+  <div class="item">
+    <div class="bg" style="background-image:url(3.jpg)"></div>
+    <div class="content">
+      <div class="profile">
+        <img src="three.jpg" alt="">
+        <br>
+        <h2 class="title">Jean Doe</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, voluptates.</p>
+      </div>
+    </div>
+  </div>
+  <div class="item">
+    <div class="bg" style="background-image:url(4.jpg)"></div>
+    <div class="content">
+      <div class="profile">
+        <img src="four.jpg" alt="">
+        <br>
+        <h2 class="title">Hana Anisa</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, soluta!</p>
+      </div>
+    </div>
+  </div>
+  <div class="item">
+    <div class="bg" style="background-image:url(5.jpg)"></div>
+    <div class="content">
+      <div class="profile">
+        <img src="five.jpg" alt="">
+        <h2 class="title">Luna Maya</h2>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde, vitae.</p>
+      </div>
+    </div>
+  </div>
+</div>
+      
+ </body>
+ </html>

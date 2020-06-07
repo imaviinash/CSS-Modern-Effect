@@ -1,0 +1,62 @@
+// Font family
+$roboto: 'Roboto', sans-serif;
+$dc: 'Dancing Script', cursive;;
+
+
+// Font weight
+$light: 300;
+$normal: 400;
+$mid: 500;
+$semibold: 600;
+$bold: 700;
+
+
+// colors
+$pink: #ff5353;
+$lightPink: #fef7f6;
+$black: #000;
+$white: #fff;
+
+// Transition - animation
+$transition: all 300ms ease;
+
+
+@mixin pseudo($t:0, $l:0, $r:0, $b:0) {
+    content: '';
+    position: absolute;
+    top: $t;
+    left: $l;
+    right: $r;
+    bottom: $b;
+}
+
+@mixin mq($w) {
+    @media screen and (max-width: $w+px) {
+        @content;
+    }
+}
+
+@mixin min-mq($w:992) {
+    @media screen and (min-width: $w+px) {
+        @content;
+    }
+}
+
+@mixin mq-between($mw, $mxw) {
+    @media (min-width: $mw+px) and (max-width: $mxw+px) {
+        @content;
+    }
+}
+
+@mixin bg-props($s:cover, $p:center top, $r:no-repeat) {
+    background-size: $s;
+    background-position: $p;
+    background-repeat: $r;
+}
+
+@mixin flexbox($a: inherit, $jc:space-between) {
+    align-items: $a;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: $jc;
+}

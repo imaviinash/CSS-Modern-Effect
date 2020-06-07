@@ -1,0 +1,335 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <title>Document</title>
+     <script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+    ></script>
+     <style>
+      
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+* {margin:0;padding:0;border:0 none; position: relative;}
+html {
+  background: #fff;
+  height: 100%;
+  box-sizing: border-box;
+  font-family: Signika, sans serif;
+  font-weight: 300;
+  overflow: hidden;
+}
+body {
+  height: inherit;
+    font-family: tahoma;
+}
+.hide {display: none;}
+/*Section ratio 16:9 */
+section {
+  width: 80vw;
+  height: 80vh;
+  margin: auto;
+  position: absolute;
+  top:0;right:0;bottom:0;left:0;
+}
+section > label {
+  position: absolute;
+  top:0;
+  left:0;
+  width:80vw;
+  height: 100%;
+  cursor: pointer;
+  transition: 1s;
+  z-index: 1;
+  background: no-repeat center;
+  background-size: cover;
+  background-clip: padding-box;
+  visibility: hidden;
+}
+section > label:nth-of-type(1) {
+  background-image: 
+url(q.jpeg);
+}
+section > label:nth-of-type(2) {
+  background-image:
+url(woman-3240095_1920.jpg);
+}
+section > label:nth-of-type(3) {
+  background-image:
+url(0.jpeg);
+}
+section > label:nth-of-type(4) {
+  background-image:  url(q2.jpeg);
+}
+/*mostrar imágenes por 1/2*/
+section > label:before,
+section > label:after {
+  content: '';
+  background: inherit; 
+  background-clip: content-box;
+  position: absolute;
+  width: 80vw;
+  height: 80vh;
+  visibility: visible;
+  transition: .5s linear;
+  transform-origin: center;
+}
+section > label:before {
+  clip: rect(0px, 40vw, 80vh, 0px);
+  animation: saleIzq .8s cubic-bezier(0.99,0.1,0.35,1.2) forwards;
+}
+section > label:after {
+  clip: rect(0px, 80vw, 80vh, 40vw);
+  -top: -100vh;
+  animation: saleDch .8s cubic-bezier(0.99,0.1,0.35,1.2) forwards;
+}
+
+/* selector de diapositiva y transiciones entre ellas */
+nav {
+  position: absolute;
+  left: 0;
+  bottom: -5vh;
+  width: 100%;
+  text-align: center;
+}
+nav label {
+  background: rgba(0,0,0,0);
+  display: inline-block;
+  width: 1.3rem;
+  height: 1.3rem;
+  border: 2px solid #bbb;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: .4s;
+  position: static;
+}
+nav label:before {
+  content: attr(data-page);
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: .9rem;
+  color: #aaa;
+  display: none;
+}
+
+#uno1:checked ~ section nav [for='uno1'],
+#dos1:checked ~ section nav [for='dos1'],
+#tres1:checked ~ section nav [for='tres1'],
+#cuatro1:checked ~ section nav [for='cuatro1'] {
+  border: .4rem solid #ABDC28;
+}
+
+#uno1:checked ~ section nav [for='uno1']:before,
+#dos1:checked ~ section nav [for='dos1']:before,
+#tres1:checked ~ section nav [for='tres1']:before,
+#cuatro1:checked ~ section nav [for='cuatro1']:before {
+  display: block;
+}
+
+#uno1:checked ~ section > [for='uno']:before,
+#dos1:checked ~ section > [for='dos']:before,
+#tres1:checked ~ section > [for='tres']:before,
+#cuatro1:checked ~ section > [for='cuatro']:before {
+  animation: entraIzq 1s cubic-bezier(0.99,0.1,0.35,1.2) forwards;
+}
+#uno1:checked ~ section > [for='uno']:after,
+#dos1:checked ~ section > [for='dos']:after,
+#tres1:checked ~ section > [for='tres']:after,
+#cuatro1:checked ~ section > [for='cuatro']:after {
+  animation: entraDch 1s cubic-bezier(0.99,0.1,0.35,1.2) forwards;
+}
+
+#uno1:checked ~ section > [for='uno']:after,
+#dos1:checked ~ section > [for='dos']:after,
+#tres1:checked ~ section > [for='tres']:after,
+#cuatro1:checked ~ section > [for='cuatro']:after {
+  top: 0;
+}
+
+@keyframes saleIzq {
+  0% {left:0; display: block;}
+  98% {left:-100vh;}
+  99% {left:-100vh; display: none;}
+  100% {top: -100vh;}
+}
+@keyframes entraIzq {
+  0% {top: 100vh;display:none;}
+  1% {top:100vh;display: block;}
+  100% {top:0;}
+}
+
+@keyframes saleDch {
+  0% {right:0; display: block;}
+  98% {right: -100vh;}
+  99% {right: -100vh; display: none;}
+  100% {top: 100vh;right:0}
+}
+@keyframes entraDch {
+  0% {top: -100vh;display:none;}
+  1% {top:-100vh;display: block;}
+  100% {top:0;}
+}
+
+/********* pasar a full */
+#uno:checked ~ section [for='uno']:before,
+#dos:checked ~ section [for='dos']:before,
+#tres:checked ~ section [for='tres']:before,
+#cuatro:checked ~ section [for='cuatro']:before {
+  clip: rect(0px, 40vw, 80vh, 0px);
+  transform: scale(1.25);
+}
+#uno:checked ~ section [for='uno']:after,
+#dos:checked ~ section [for='dos']:after,
+#tres:checked ~ section [for='tres']:after,
+#cuatro:checked ~ section [for='cuatro']:after {
+  clip: rect(0px, 80vw, 80vh, 40vw);
+  transform: scale(1.25);
+}
+#cierra[name='tractor']:checked ~ section:after,
+section:after {
+  content: '';
+  background: rgba(0,0,85,.4);
+  position: fixed;
+  top:0;
+  left:0;
+  bottom:0;
+  right:0;
+  opacity: 0;
+  transition: .5s;
+  z-index: 5;
+  transform: scale(0);
+}
+[name="tractor"]:checked ~ section:after {
+  transform: scale(1);
+  opacity: 1;
+  transform-origin: center;
+}
+[for='cierra'] {
+  position: absolute;
+  right: 1rem;
+  top:0;
+  z-index: 10;
+  cursor: pointer;
+}
+#cierra:checked ~ [for='cierra']:before {
+  content:'';
+  font-size:0;
+}
+[name="tractor"]:checked ~[for='cierra']:before {
+  content: '\2297';
+  font-size: 4rem;
+  color: #fff;
+}
+[name="tractor"]:checked ~[for='cierra']:hover:before {
+  color: tomato;
+}
+
+/* La información */
+article {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  color: #fff;
+  transform: scalex(0);
+  transform-origin: 0 0;
+  transition: .5s;
+  transition-delay: 0;
+  padding: 5vh 5vh;
+}
+article h1 {
+  font-weight: 600;
+  font-size: 6vw;
+  font-family: arial;
+  margin-left: 70px;
+    margin-top: 300px;
+   
+}
+article p {
+  font-size: 1rem;
+  padding: 5vh 5vw;
+  line-height: 1.5;
+    width: 780px;
+    text-align: justify;
+}
+#uno:checked ~ .uno,
+#dos:checked ~ .dos,
+#tres:checked ~ .tres,
+#cuatro:checked ~ .cuatro {
+  transform: scalex(1);
+  z-index: 7;
+  transition-delay: .7s;
+}
+
+.aviso {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  background: orange;
+  color: #fff;
+  padding: .5rem;
+  border-radius: 5px 0 0;
+  box-shadow: 0 0 4px rgba(0,0,0,.4);
+  z-index: 100;
+}
+.aviso a {
+  text-decoration: none;
+  color: #445;
+}
+     </style>
+ </head>
+ <body>
+     <!-- inputs to display content-->
+<input class='hide' type="radio" id="uno" name="tractor" />    
+<input class='hide' type="radio" id="dos" name="tractor" />      
+<input class='hide' type="radio" id="tres" name="tractor" />
+<input class='hide' type="radio" id="cuatro" name="tractor" />
+<input class='hide' type="radio" id="cierra" name="tractor" />
+<!--inputs for moving images -->
+<input class='hide' type="radio" id="uno1" name="tractor2" checked='checked' /> 
+<input class='hide' type="radio" id="dos1" name="tractor2" /> 
+<input class='hide' type="radio" id="tres1" name="tractor2" /> 
+<input class='hide' type="radio" id="cuatro1" name="tractor2" />
+ 
+
+<section>
+  <nav>
+    <label for='uno1' data-page='slide 1'></label>
+    <label for='dos1' data-page='slide 2'></label>
+    <label for='tres1' data-page='slide 3'></label>
+    <label for='cuatro1' data-page='slide 4'></label>
+  </nav>
+   
+    <label for='uno'></label>
+    <label for='dos'></label>
+    <label for='tres'></label>
+    <label for='cuatro'></label>
+</section>
+
+<article class='uno'>
+  <h1>Amazing Design</h1>
+  <p>Lorem fistrum a peich sexuarl pecador me cago en tus muelas caballo blanco caballo negroorl minim al ataquerl ese pedazo de. Reprehenderit no te digo trigo por no llamarte Rodrigor se calle ustée cillum la caidita quietooor. Me cago en tus muelas sit amet sit amet irure laboris pupita dolore. Incididunt al ataquerl sed ad.</p>
+</article>
+
+<article class='dos'>
+  <h1>Introducing Today</h1>
+  <p>Consectetur torpedo labore irure esse pecador mamaar. Enim sed aliqua quietooor pupita ese hombree enim ese que llega. Quietooor sexuarl hasta luego Lucas irure tempor la caidita nostrud et labore ese hombree pecador. Irure ullamco cillum commodo reprehenderit apetecan occaecat aliqua sexuarl no te digo trigo por no llamarte Rodrigor enim. Dolore jarl diodenoo quis por la gloria de mi madre diodeno no puedor.</p>
+</article>
+
+<article class='tres'>
+  <h1>Fully Interactive</h1>
+  <p>Lorem fistrum commodo nostrud pupita ut labore dolore. No te digo trigo por no llamarte Rodrigor occaecat amatomaa officia nostrud. Commodo jarl a wan me cago en tus muelas dolor aliquip no puedor esse ese hombree consectetur. Dolor diodenoo ut benemeritaar torpedo.</p>
+</article>
+
+<article class='cuatro'>
+  <h1>Source file Included</h1>
+  <p>A wan fistro te voy a borrar el cerito caballo blanco caballo negroorl ese que llega apetecan. No te digo trigo por no llamarte Rodrigor pecador velit jarl quietooor al ataquerl quietooor tempor. Pecador benemeritaar sed incididunt mamaar te va a hasé pupitaa aute aliquip ese que llega dolore condemor. Voluptate officia ut dolore llevame al sircoo aliqua voluptate qui ese que llega.</p>
+</article>
+
+<label for='cierra'></label>
+ 
+ </body>
+ </html>

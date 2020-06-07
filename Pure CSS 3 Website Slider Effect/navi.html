@@ -1,0 +1,198 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <title>Document</title>
+     <style>
+      * {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: #616161;
+}
+#amg-slideshow-wrap {
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+#amg-slideshow-wrap input[type=radio] {
+  position: absolute;
+  left: 50%;
+  bottom: 15px;
+  z-index: 100;
+  visibility: hidden;
+}
+#amg-slideshow-wrap input[type=radio]#amg-button_1:checked ~ label[for=amg-button_1] {
+  background-color: #646464;
+}
+#amg-slideshow-wrap input[type=radio]#amg-button_2:checked ~ label[for=amg-button_2] {
+  background-color: #646464;
+}
+#amg-slideshow-wrap input[type=radio]#amg-button_3:checked ~ label[for=amg-button_3] {
+  background-color: #646464;
+}
+#amg-slideshow-wrap input[type=radio]#amg-button_4:checked ~ label[for=amg-button_4] {
+  background-color: #646464;
+}
+#amg-slideshow-wrap input[type=radio]#amg-button_1:checked ~ #amg-slideshow > ul {
+  left: 0%;
+}
+#amg-slideshow-wrap input[type=radio]#amg-button_2:checked ~ #amg-slideshow > ul {
+  left: -100%;
+}
+#amg-slideshow-wrap input[type=radio]#amg-button_3:checked ~ #amg-slideshow > ul {
+  left: -200%;
+}
+#amg-slideshow-wrap input[type=radio]#amg-button_4:checked ~ #amg-slideshow > ul {
+  left: -300%;
+}
+#amg-slideshow-wrap input[type=radio]#amg-button_1:checked ~ .amg-arrow#amg-arrow_2 {
+  right: 10px;
+  display: block;
+}
+#amg-slideshow-wrap input[type=radio]#amg-button_2:checked ~ .amg-arrow#amg-arrow_3 {
+  right: 10px;
+  display: block;
+}
+#amg-slideshow-wrap input[type=radio]#amg-button_3:checked ~ .amg-arrow#amg-arrow_4 {
+  right: 10px;
+  display: block;
+}
+#amg-slideshow-wrap input[type=radio]#amg-button_4:checked ~ .amg-arrow#amg-arrow_5 {
+  right: 10px;
+  display: block;
+}
+#amg-slideshow-wrap input[type=radio]#amg-button_2:checked ~ .amg-arrow#amg-arrow_1 {
+  left: 10px;
+  display: block;
+  transform: scale(-1);
+}
+#amg-slideshow-wrap input[type=radio]#amg-button_3:checked ~ .amg-arrow#amg-arrow_2 {
+  left: 10px;
+  display: block;
+  transform: scale(-1);
+}
+#amg-slideshow-wrap input[type=radio]#amg-button_4:checked ~ .amg-arrow#amg-arrow_3 {
+  left: 10px;
+  display: block;
+  transform: scale(-1);
+}
+#amg-slideshow-wrap input[type=radio]#amg-button_5:checked ~ .amg-arrow#amg-arrow_4 {
+  left: 10px;
+  display: block;
+  transform: scale(-1);
+}
+#amg-slideshow-wrap label:not(.amg-arrow) {
+  position: absolute;
+  left: 50%;
+  bottom: 10px;
+  z-index: 100;
+  width: 12px;
+  height: 12px;
+  background-color: #c8c8c8;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.8);
+  transition: background-color 0.2s;
+}
+#amg-slideshow-wrap label:not(.amg-arrow)[for=amg-button_1] {
+  margin-left: -36px;
+}
+#amg-slideshow-wrap label:not(.amg-arrow)[for=amg-button_2] {
+  margin-left: -18px;
+}
+#amg-slideshow-wrap label:not(.amg-arrow)[for=amg-button_3] {
+  margin-left: 0px;
+}
+#amg-slideshow-wrap label:not(.amg-arrow)[for=amg-button_4] {
+  margin-left: 18px;
+}
+#amg-slideshow-wrap label.amg-arrow {
+  font-size: 25px;
+  color: #fffff0;
+  position: absolute;
+  top: 50%;
+  margin-top: -25px;
+  width: 40px;
+  text-align: right;
+  display: none;
+  opacity: 0.7;
+  cursor: pointer;
+  z-index: 1000;
+  background-color: transparent;
+  transition: opacity .2s;
+  text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.8);
+}
+#amg-slideshow-wrap label.amg-arrow:hover {
+  opacity: 1;
+}
+#amg-slideshow-wrap label.amg-arrow:active {
+  margin-top: -24px;
+}
+#amg-slideshow {
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+  overflow: hidden;
+  position: relative;
+}
+#amg-slideshow > ul {
+  list-style: none;
+  height: 100%;
+  width: 400%;
+  overflow: hidden;
+  position: relative;
+  left: 0px;
+  transition: left 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+}
+#amg-slideshow > ul > li {
+  width: 25%;
+  float: left;
+  position: relative;
+}
+#amg-slideshow > ul > li > img {
+  margin: auto;
+  width: 100%;
+}
+
+     
+     
+     </style>
+ </head>
+ <body>
+         <div id="amg-slideshow-wrap">
+        <input type="radio" id="amg-button_1" name="controls" checked="checked"/>
+        <label for="amg-button_1"></label>
+        <input type="radio" id="amg-button_2" name="controls"/>
+        <label for="amg-button_2"></label>
+        <input type="radio" id="amg-button_3" name="controls"/>
+        <label for="amg-button_3"></label>
+        <input type="radio" id="amg-button_4" name="controls"/>
+        <label for="amg-button_4"></label>
+        <label for="amg-button_1" class="amg-arrow" id="amg-arrow_1">></label>
+        <label for="amg-button_2" class="amg-arrow" id="amg-arrow_2">></label>
+        <label for="amg-button_3" class="amg-arrow" id="amg-arrow_3">></label>
+        <label for="amg-button_4" class="amg-arrow" id="amg-arrow_4">></label>
+        <div id="amg-slideshow">
+            <ul>
+                <li id="amg-slide_1">
+                    <img src="yes.jpg" />
+                </li>
+                <li id="amg-slide_2">
+                    <img src="no.jpg" />
+                </li>
+                <li id="amg-slide_3">
+                    <img src="ha.jpg" />
+                </li>
+                <li id="amg-slide_4">
+                    <img src="moon.jpg" />
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+ </body>
+ </html>

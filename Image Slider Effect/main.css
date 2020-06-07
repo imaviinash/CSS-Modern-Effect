@@ -1,0 +1,254 @@
+
+body,
+html,
+.seq {
+
+  /* #1 */
+  width: 100%;
+  height: 100%;
+
+  /* #2 */
+  margin: 0;
+  padding: 0;
+}
+ 
+.seq {
+
+  /* #1 */
+  position: relative; 
+  overflow: hidden; 
+  font-family: sans-serif;
+  color: white;
+  text-align: center; 
+  background-color: #2A93BC; 
+  transition-duration: .5s;
+  transition-property: background-color;
+}
+ 
+.seq-canvas,
+.seq-canvas > * {
+
+  /* #1 */
+  height: 100%;
+  width: 100%;
+
+  /* #2 */
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+ 
+.seq-canvas > * {
+  /* #1 */
+  position: absolute;
+
+  /* #2 */
+  padding: 32px;
+  box-sizing: border-box;
+
+  /* #3 */
+  height: auto;
+  top: 0;
+  bottom: 80px;
+}
+
+.seq-step1 {
+  background-color: #102334; 
+}
+
+.seq-step2 {
+  background-color:#1f1f1f;
+}
+
+.seq-step3 {
+  background-color: #561295;
+}
+
+.feature {
+  width: 70%;
+  max-width: 100%;
+  height: auto;
+}
+
+@media only screen and (min-width: 460px) and (min-height: 520px) {
+  .feature {
+    width: 100%;
+  }
+}
+
+
+/* Ghost element */
+.valign:before {
+  content: "";
+  height: 100%;
+}
+
+/* Vertically align the ghost and desired elements */
+.valign:before,
+.valign > .vcenter {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Remove 4px gap to allow consistent valign */
+.valign {
+  font-size: 0;
+}
+
+/* Reset font-size on valigned elements */
+.valign > .vcenter {
+  font-size: 16px;
+}
+ 
+.title {
+  /* #1 */
+  margin: 0;
+
+  /* #2 */
+  opacity: 0;
+  transform: translateX(50px) translateZ(0);
+
+  /* #3 */
+  transition-duration: .5s;
+  transition-property: opacity, transform;
+}
+
+/*
+ * When a step is active, fade in to opaque and slide to the center
+ */
+.seq-in .title {
+  opacity: 1;
+  transform: translateX(0) translateZ(0);
+}
+ 
+.seq-out .title {
+  opacity: 0;
+  transform: translateX(-50px) translateZ(0);
+}
+
+ 
+.feature {
+  transform: translateZ(0) scale(0);
+  transition-duration: .5s;
+  transition-property: transform, opacity;
+}
+
+ 
+.seq-in .feature {
+  transform: translateZ(0) scale(1);
+}
+ 
+.seq-out .feature {
+  transform: translateZ(0) scale(1);
+  opacity: 0;
+}
+ 
+.nav {
+  /* #1 */
+  position: absolute;
+  z-index: 100;
+  left: 0;
+  right: 0;
+  bottom: 2.5em;
+  max-width: 640px;
+  width: 100%;
+ 
+  border: none;
+  margin: 0 auto;
+  padding: 0;
+}
+
+ 
+.seq-next,
+.seq-prev {
+  /* #1 */
+  padding: 0;
+  background: transparent;
+  border: none;
+
+  /* #2 */
+  padding: .75em;
+  cursor: pointer;
+  color: white;
+  font-size: .75em;
+  text-transform: uppercase;
+
+  /* #3 */
+  opacity: .7;
+  transition-duration: .25s;
+  transition-property: opacity;
+}
+
+.seq-next:hover,
+.seq-prev:hover {
+  opacity: 1;
+}
+ 
+.seq-next,
+.seq-prev,
+.seq-pagination {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  margin-top: 0;
+}
+ 
+.seq-pagination {
+  margin: 0 1em;
+  padding: 0;
+}
+ 
+.seq-pagination li {
+  /* #1 */
+  position: relative;
+
+  /* #2 */
+  list-style: none;
+
+  /* #3 */
+  display: inline-block;
+  vertical-align: middle;
+
+  /* #4 */
+  width: 50px;
+  height: 40px;
+  margin: 0 .25em;
+}
+ 
+.seq-pagination li:before {
+  /* #1 */
+  content: "";
+  display: block;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  margin-left: -3px;
+  margin-top: .5em;
+  border-radius: 50%;
+  background: white;
+
+  /* #2 */
+  opacity: 0;
+  transition-duration: .25s;
+  transition-property: opacity;
+}
+
+/*
+ * Show the indicator dot for the current link
+ */
+.seq-pagination .seq-current:before {
+  opacity: .7;
+}
+
+/*
+ * Reset styles
+ */
+.seq-pagination img,
+.seq-pagination a {
+  display: block;
+  border: none;
+}
+     

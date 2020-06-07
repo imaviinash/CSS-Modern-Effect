@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <div id="sequence" class="seq">
+        <ul class="seq-canvas">
+            <li class="step1 valign seq-in">
+                <div class="vcenter">
+                    <img data-seq class="feature" src="bmw.png" width="389" height="300" />
+                    <h2 data-seq class="title">BMW Nova</h2>
+                </div>
+            </li>
+            <li class="step2 valign">
+                <div class="vcenter">
+                    <img data-seq class="feature" src="bmw1.png" width="325" height="300" />
+                    <h2 data-seq class="title">Blue Bmw</h2>
+                </div>
+            </li>
+            <li class="step3 valign">
+                <div class="vcenter">
+                    <img data-seq class="feature" src="bmw2.png" width="325" height="300" />
+                    <h2 data-seq class="title">Coming up</h2>
+                </div>
+            </li>
+        </ul>
+
+        <fieldset class="nav" aria-label="Slider buttons" aria-controls="sequence">
+
+            <button type="button" class="seq-prev" aria-label="Previous"><img src="prev.svg" alt="Previous" /></button>
+
+            <ul role="navigation" aria-label="Pagination" class="seq-pagination">
+                <li class="seq-current">
+                    <a href="#step1" rel="step1" title="Go to bananas">
+                        <img src="bmw.png" alt="Bananas" width="50" height="40" />
+                    </a>
+                </li>
+                <li>
+                    <a href="#step2" rel="step2" title="Go to coconut">
+                        <img src="bmw1.png" alt="Coconut" width="50" height="40" />
+                    </a>
+                </li>
+                <li>
+                    <a href="#step3" rel="step3" title="Go to orange">
+                        <img src="bmw2.png" alt="Orange" width="50" height="40" />
+                    </a>
+                </li>
+            </ul>
+
+
+            <button type="button" class="seq-next" aria-label="Next"><img src="next.svg" alt="Next" /></button>
+        </fieldset>
+
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/154/sequence.min.2.1.0.js"></script>
+    <script>
+        var sequenceElement = document.getElementById("sequence");
+
+        var options = {
+            keyNavigation: true,
+            animateCanvas: false,
+            phaseThreshold: false,
+            reverseWhenNavigatingBackwards: true
+        }
+
+        var mySequence = sequence(sequenceElement, options);
+    </script>
+</body>
+
+</html>
